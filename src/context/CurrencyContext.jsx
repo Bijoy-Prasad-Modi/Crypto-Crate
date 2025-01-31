@@ -22,6 +22,7 @@ const CryptoProvider = ({ children }) => {
   );
 };
 
+
 // Custom hook to consume context
 export const useCrypto = () => {
   const context = useContext(CryptoContext);
@@ -31,5 +32,6 @@ export const useCrypto = () => {
   }
   return context;
 };
+
 
 export default CryptoProvider;

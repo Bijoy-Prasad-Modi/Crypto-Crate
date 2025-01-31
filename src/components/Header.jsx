@@ -51,11 +51,7 @@ const Header = () => {
             <Select
               variant="outlined"
               value={currency}
-              onChange={(e) => {
-                if (e.target.value !== currency) {
-                  setCurrency(e.target.value);
-                }
-              }}
+              onChange={(e) => setCurrency(e.target.value)}
               style={{ width: 100, height: 40, marginRight: 15 }}
             >
               <MenuItem value={"USD"}>USD</MenuItem>
