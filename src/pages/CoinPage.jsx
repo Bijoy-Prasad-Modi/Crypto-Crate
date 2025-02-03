@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import { SingleCoin } from "../config/api";
 import { useCrypto } from "../context/CurrencyContext";
 import CoinInfo from "../components/CoinInfo";
-import { useTheme } from "@emotion/react";
-
+import { Box, LinearProgress, Typography, useTheme } from "@mui/material";
+import parse from "html-react-parser";
+import { numberWithCommas } from "../components/Banner/Carousel";
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
@@ -26,21 +27,114 @@ const CoinPage = () => {
     fetchCoin();
   }, [id]);
 
+  if (!coin) return <LinearProgress sx={{ backgroundColor: "gold" }} />;
+
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
-        flexDirection: "row",
         [theme.breakpoints.down("md")]: {
           flexDirection: "column",
           alignItems: "center",
         },
       }}
     >
-      <div>sidebar{/*sidebar*/}</div>
+      <Box
+        sx={{
+          width: "30%",
+          [theme.breakpoints.down("md")]: {
+            width: "100%",
+          },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: 25,
+          borderRight: "2px solid grey",
+        }}
+      >
+        <img
+          src={coin?.image.large}
+          alt={coin?.name}
+          height="200"
+          style={{ marginBottom: 20 }}
+        />
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: "bold",
+            marginBottom: 20,
+            fontFamily: "Montserrat",
+          }}
+        >
+          {coin?.name}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            width: "100%",
+            fontFamily: "Montserrat",
+            padding: 25,
+            paddingBottom: 15,
+            paddingTop: 0,
+            textAlign: "justify",
+          }}
+        >
+          {parse(
+            coin?.description.en.split(". ")[0] || "No description available."
+          )}
+          .
+        </Typography>
+        <Box
+          sx={{
+            alignSelf: "start",
+            padding: 25,
+            paddingTop: 10,
+            width: "100%",
+            [theme.breakpoints.down("md")]: {
+              display: "flex",
+              justifyContent: "space-around",
+            },
+            [theme.breakpoints.down("sm")]: {
+              flexDirection: "column",
+              alignItems: "center",
+            },
+            [theme.breakpoints.down("xs")]: {
+              alignItems: "start",
+            },
+          }}
+        >
+          <span style={{ display: "flex" }}>
+            <Typography variant="h5">Rank:</Typography>
+            <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
+              {coin?.market_cap_rank}
+            </Typography>
+          </span>
+          <span style={{ display: "flex" }}>
+            <Typography variant="h5">Current Price:</Typography>
+            <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
+              {symbol}{" "}
+              {numberWithCommas(
+                coin?.market_data.current_price[currency.toLowerCase()]
+              )}
+            </Typography>
+          </span>
+          <span style={{ display: "flex" }}>
+            <Typography variant="h5">Market Cap: </Typography>
+            <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
+              {symbol}{" "}
+              {numberWithCommas(
+                coin?.market_data.market_cap[currency.toLowerCase()]
+                  ?.toString()
+                  .slice(0, -6) || "0"
+              )}
+              M
+            </Typography>
+          </span>
+        </Box>
+      </Box>
       {/*chart*/}
       <CoinInfo coin={coin} />
-    </div>
+    </Box>
   );
 };
 
