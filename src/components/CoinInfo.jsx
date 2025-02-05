@@ -4,7 +4,29 @@ import axios from "axios";
 import { HistoricalChart } from "../config/api";
 import { ThemeProvider } from "@emotion/react";
 import { Box, CircularProgress, createTheme, useTheme } from "@mui/material";
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  LineElement,
+  CategoryScale, // Fixes "category is not a registered scale"
+  LinearScale,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend
+);
 import { Line } from "react-chartjs-2";
+import { chartDays } from "../config/data";
+import SelectButton from "./Banner/SelectButton";
 
 const CoinInfo = ({ coin }) => {
   const [historicalData, setHistoricalData] = useState();
@@ -16,17 +38,16 @@ const CoinInfo = ({ coin }) => {
   const theme = useTheme();
 
   const fetchHistoricalData = async () => {
-    //if(!coin) return; //✅ Prevents errors if `coin` is undefined
     const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
     setFlag(true);
-    setHistoricalData(data.prices);
+    setHistoricalData(data.prices || []);
   };
 
-  console.log("data", historicalData);
+  console.log("Fetched Historical Data:", historicalData);
 
   useEffect(() => {
     fetchHistoricalData();
-  }, [coin, days]);
+  }, [days]);
 
   const darkTheme = createTheme({
     palette: {
@@ -62,9 +83,51 @@ const CoinInfo = ({ coin }) => {
           <>
             <Line
               data={{
-                labels: historicalData.map((coin) => {}),
+                labels: historicalData.map((coin) => {
+                  let date = new Date(coin[0]);
+                  let time =
+                    date.getHours() > 12
+                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                      : `${date.getHours()}:${date.getMinutes()} AM`;
+                  return days === 1 ? time : date.toLocaleDateString();
+                }),
+                datasets: [
+                  {
+                    data: historicalData.map((coin) => coin[1]),
+                    label: `Price ( Past ${days} Days ) in ${currency}`,
+                    borderColor: "#EEBC1D",
+                  },
+                ],
+              }}
+              options={{
+                elements: {
+                  point: {
+                    radius: 1,
+                  },
+                },
               }}
             />
+            <Box
+              sx={{
+                display: "flex",
+                marginTop: 20,
+                justifyContent: "space-around",
+                width: "100%",
+              }}
+            >
+              {chartDays.map((day) => (
+                <SelectButton 
+                  key={day.value}
+                  onClick={() => {
+                    setDays(day.value);
+                    setFlag(false);
+                  }}
+                  selected={day.value === days}
+                >
+                  {day.label}
+                </SelectButton>
+              ))}
+            </Box>
           </>
         )}
       </Box>
