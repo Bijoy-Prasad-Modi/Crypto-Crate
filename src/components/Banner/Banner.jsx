@@ -15,10 +15,10 @@ const Banner = () => {
     >
       <Container
         sx={{
-          height: 400,
+          height: 360,
           display: "flex",
           flexDirection: "column",
-          paddingTop: 25,
+          paddingTop: -5,
           justifyContent: "space-around",
         }}
       >
@@ -35,18 +35,21 @@ const Banner = () => {
             variant="h2"
             style={{
               fontWeight: "bold",
-              marginBottom: 15,
+              marginBottom: 0,
               fontFamily: "Montserrat",
+              paddingTop: 65,
             }}
           >
             Crypto Hunter
           </Typography>
           <Typography
-            variant="subtitle2"
+            variant="body1"
             style={{
-              color: "darkgrey",
+              
+              fontWeight: "bold",
               textTransform: "capitalize",
               fontFamily: "Montserrat",
+              paddingTop: 25,
             }}
           >
             Get all the Info regarding your favorite Crypto Currency

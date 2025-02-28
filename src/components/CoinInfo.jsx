@@ -62,13 +62,13 @@ const CoinInfo = ({ coin }) => {
     <ThemeProvider theme={darkTheme}>
       <Box
         sx={{
-          width: "75%",
+          width: "70%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: 25,
-          padding: 40,
+          marginTop: 4,
+          padding: 4,
           [theme.breakpoints.down("md")]: {
             width: "100%",
             marginTop: 0,
@@ -110,7 +110,7 @@ const CoinInfo = ({ coin }) => {
             <Box
               sx={{
                 display: "flex",
-                marginTop: 20,
+                marginTop: 2,
                 justifyContent: "space-around",
                 width: "100%",
               }}
