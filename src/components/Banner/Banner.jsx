@@ -4,7 +4,15 @@ import { Container, Typography, Box } from "@mui/material";
 
 const Banner = () => {
   return (
-    <Box sx={{ backgroundImage: "url(./banner2.jpg)" }}>
+    <Box
+      sx={{
+        backgroundImage: "url(./banner2.jpg)",
+        backgroundSize: "cover", // ✅ Image covers entire box
+        backgroundPosition: "center", // ✅ Centers image properly
+        backgroundRepeat: "no-repeat", // ✅ Prevents repeating
+        width: "100%", // ✅ Full width of parent/container
+      }}
+    >
       <Container
         sx={{
           height: 400,
