@@ -4,13 +4,7 @@ import { useParams } from "react-router-dom";
 import { SingleCoin } from "../config/api";
 import { useCrypto } from "../context/CurrencyContext";
 import CoinInfo from "../components/CoinInfo";
-import {
-  Box,
-  Container,
-  LinearProgress,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, LinearProgress, Typography, useTheme } from "@mui/material";
 import parse from "html-react-parser";
 import { numberWithCommas } from "../components/Banner/Carousel";
 const CoinPage = () => {
@@ -109,7 +103,7 @@ const CoinPage = () => {
             },
           }}
         >
-          <span style={{ display: "flex", gap: "10px"  }}>
+          <span style={{ display: "flex", gap: "10px" }}>
             <Typography
               variant="h5"
               style={{
@@ -120,17 +114,23 @@ const CoinPage = () => {
             >
               Rank :
             </Typography>
-            
+
             <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
               {coin?.market_cap_rank}
             </Typography>
           </span>
           <span style={{ display: "flex" }}>
-            <Typography variant="h5" style={{
+            <Typography
+              variant="h5"
+              style={{
                 fontWeight: "bold",
                 marginBottom: 20,
                 fontFamily: "Montserrat",
-              }}>Current Price:</Typography> &nbsp; &nbsp;
+              }}
+            >
+              Current Price:
+            </Typography>{" "}
+            &nbsp; &nbsp;
             <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
               {symbol}{" "}
               {numberWithCommas(
@@ -139,11 +139,17 @@ const CoinPage = () => {
             </Typography>
           </span>
           <span style={{ display: "flex" }}>
-            <Typography variant="h5" style={{
+            <Typography
+              variant="h5"
+              style={{
                 fontWeight: "bold",
                 marginBottom: 20,
                 fontFamily: "Montserrat",
-              }}>Market Cap: </Typography>&nbsp; &nbsp;
+              }}
+            >
+              Market Cap:{" "}
+            </Typography>
+            &nbsp; &nbsp;
             <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
               {symbol}{" "}
               {numberWithCommas(
