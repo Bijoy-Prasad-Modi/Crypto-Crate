@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/HomePage";
 import CoinPage from "./pages/CoinPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { makeStyles, styled } from "@mui/material";
