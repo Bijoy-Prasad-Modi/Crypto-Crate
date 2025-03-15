@@ -41,20 +41,25 @@ const Header = () => {
                 fontFamily: "Montserrat",
                 fontWeight: "bold",
                 cursor: "pointer",
+                paddingLeft: 20,
               }}
             >
               Crypto Hunter
             </Typography>
-            <Select
-              variant="outlined"
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              style={{ width: 100, height: 40, marginRight: 15 }}
+            <Box
+              sx={{ display: "flex", alignItems: "center", paddingRight: 4 }}
             >
-              <MenuItem value={"USD"}>USD</MenuItem>
-              <MenuItem value={"EUR"}>EUR</MenuItem>
-              <MenuItem value={"INR"}>INR</MenuItem>
-            </Select>
+              <Select
+                variant="outlined"
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                sx={{ width: 100, height: 40, marginRight: 15 }} // ✅ Using `sx` instead of `style`
+              >
+                <MenuItem value={"USD"}>USD</MenuItem>
+                <MenuItem value={"EUR"}>EUR</MenuItem>
+                <MenuItem value={"INR"}>INR</MenuItem>
+              </Select>
+            </Box>
           </Toolbar>
         </AppBar>
       </Box>
