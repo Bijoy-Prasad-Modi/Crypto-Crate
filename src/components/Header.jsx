@@ -33,7 +33,7 @@ const Header = () => {
           <Toolbar>
             <Typography
               onClick={handleNavigation}
-              variant="h6"
+              variant="h5"
               component="div"
               sx={{
                 flexGrow: 1,
@@ -41,7 +41,8 @@ const Header = () => {
                 fontFamily: "Montserrat",
                 fontWeight: "bold",
                 cursor: "pointer",
-                paddingLeft: 20,
+                paddingLeft: 21,
+                fontSize: "26px", 
               }}
             >
               Crypto Hunter
