@@ -45,7 +45,7 @@ const Header = () => {
                 fontSize: "26px", 
               }}
             >
-              Crypto Hunter
+              Crypto Crate 
             </Typography>
             <Box
               sx={{ display: "flex", alignItems: "center", paddingRight: 4 }}

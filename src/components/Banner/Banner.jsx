@@ -7,10 +7,10 @@ const Banner = () => {
     <Box
       sx={{
         backgroundImage: "url(./banner2.jpg)",
-        backgroundSize: "cover", // ✅ Image covers entire box
-        backgroundPosition: "center", // ✅ Centers image properly
-        backgroundRepeat: "no-repeat", // ✅ Prevents repeating
-        width: "100%", // ✅ Full width of parent/container
+        backgroundSize: "cover", 
+        backgroundPosition: "center", 
+        backgroundRepeat: "no-repeat", 
+        width: "100%", 
       }}
     >
       <Container
@@ -40,7 +40,7 @@ const Banner = () => {
               paddingTop: 65,
             }}
           >
-            Crypto Hunter
+            Crypto Crate 
           </Typography>
           <Typography
             variant="body1"
