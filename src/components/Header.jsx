@@ -1,4 +1,3 @@
-import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -42,10 +41,10 @@ const Header = () => {
                 fontWeight: "bold",
                 cursor: "pointer",
                 paddingLeft: 21,
-                fontSize: "26px", 
+                fontSize: "26px",
               }}
             >
-              Crypto Crate 
+              Crypto Crate
             </Typography>
             <Box
               sx={{ display: "flex", alignItems: "center", paddingRight: 4 }}

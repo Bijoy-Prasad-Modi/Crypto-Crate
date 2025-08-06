@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TrendingCoins } from "../../config/api";
 import { useCrypto } from "../../context/CurrencyContext.jsx";
 import AliceCarousel from "react-alice-carousel";

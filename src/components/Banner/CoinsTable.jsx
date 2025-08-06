@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CoinList } from "../../config/api";
 import { useCrypto } from "../../context/CurrencyContext";
 import { useNavigate } from "react-router-dom";

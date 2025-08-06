@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCrypto } from "../context/CurrencyContext";
 import axios from "axios";
 import { HistoricalChart } from "../config/api";
@@ -17,7 +17,7 @@ import {
 
 ChartJS.register(
   LineElement,
-  CategoryScale, // Fixes "category is not a registered scale"
+  CategoryScale,
   LinearScale,
   PointElement,
   Title,
@@ -116,7 +116,7 @@ const CoinInfo = ({ coin }) => {
               }}
             >
               {chartDays.map((day) => (
-                <SelectButton 
+                <SelectButton
                   key={day.value}
                   onClick={() => {
                     setDays(day.value);

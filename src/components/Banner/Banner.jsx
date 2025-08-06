@@ -1,4 +1,3 @@
-import React from "react";
 import Carousel from "./Carousel";
 import { Container, Typography, Box } from "@mui/material";
 
@@ -7,10 +6,10 @@ const Banner = () => {
     <Box
       sx={{
         backgroundImage: "url(./banner2.jpg)",
-        backgroundSize: "cover", 
-        backgroundPosition: "center", 
-        backgroundRepeat: "no-repeat", 
-        width: "100%", 
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        width: "100%",
       }}
     >
       <Container
@@ -40,12 +39,11 @@ const Banner = () => {
               paddingTop: 65,
             }}
           >
-            Crypto Crate 
+            Crypto Crate
           </Typography>
           <Typography
             variant="body1"
             style={{
-              
               fontWeight: "bold",
               textTransform: "capitalize",
               fontFamily: "Montserrat",
